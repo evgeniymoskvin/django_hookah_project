@@ -36,8 +36,9 @@ class GenerateView(View):
                         "c21hbGwgdmlw": "VIP малый",
                         "YmlnIHZpcA": "VIP большой"
                         }
-
-        request.session['table_number_qr'] = int(dict_address[pk])
+        print(dict_address[pk])
+        print(type(dict_address[pk]))
+        request.session['table_number_qr'] = 1
         return redirect('index')
 
 
