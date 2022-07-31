@@ -20,7 +20,7 @@ from . import views
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('<int:pk>', views.GenerateView.as_view()),
-    path('print-hookah', views.PrintHookah.as_view()),
-    path('print-barman', views.PrintBarman.as_view()),
+    path('print-hookah', views.PrintHookah.as_view(), name='print-hookah'),
+    path('print-barman', views.PrintBarman.as_view(), name='print-barman'),
     path('send-admin', views.AdminSendView.as_view(), name='send-admin')
 ]
