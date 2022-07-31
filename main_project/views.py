@@ -24,26 +24,28 @@ class IndexView(View):
 
 class GenerateView(View):
     def get(self, request, pk):
-        dict_address = {"Zmlyc3Q": 1,
-                        "dHdv": 2,
-                        "dGhyZWU": 3,
-                        "Zm91cg": 4,
-                        "Zml2ZQ": 5,
-                        "c2l4": 6,
-                        "c2V2ZW4": 7,
-                        "cm91bmQ": "Круглый",
-                        "Z3JlZW4": "Зеленый",
-                        "c21hbGwgdmlw": "VIP малый",
-                        "YmlnIHZpcA": "VIP большой"
+        print(pk)
+        dict_address = {67868598762858: 1,
+                        77497795: 2,
+                        77488198676462: 3,
+                        678634267680: 4,
+                        79829578142542: 5,
+                        76278529: 6,
+                        76276327676429: 7,
+                        76863426758658: "Круглый",
+                        67285185676429: "Зеленый",
+                        762726817548968077868596: "VIP малый",
+                        66868587504967897642: "VIP большой"
                         }
         print(dict_address[pk])
         print(type(dict_address[pk]))
-        request.session['table_number_qr'] = 1
+        request.session['table_number_qr'] = dict_address[pk]
         return redirect('index')
 
 
 class PrintHookah(View):
     def get(self, request):
+        print(request.session.get('table_number_qr'))
         mes = f"Кальянщик на стол {request.session.get('table_number_qr')}"
         telegram_send.send(messages=[mes])
         return redirect('index')
