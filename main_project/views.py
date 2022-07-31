@@ -37,7 +37,7 @@ class GenerateView(View):
                         "YmlnIHZpcA": "VIP большой"
                         }
 
-        request.session['table_number_qr'] = "Круглый"
+        request.session['table_number_qr'] = 1
         return redirect('index')
 
 
