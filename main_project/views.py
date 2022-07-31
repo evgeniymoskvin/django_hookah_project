@@ -23,7 +23,19 @@ class IndexView(View):
 
 class GenerateView(View):
     def get(self, request, pk):
-        request.session['table_number_qr'] = pk
+        dict_address = {"Zmlyc3Q": 1,
+                       "dHdv": 2,
+                       "dGhyZWU": 3,
+                       "Zm91cg": 4,
+                       "Zml2ZQ": 5,
+                       "c2l4": 6,
+                       "c2V2ZW4": 7,
+                       "cm91bmQ": "Круглый",
+                       "Z3JlZW4": "Зеленый",
+                       "c21hbGwgdmlw": "VIP малый",
+                       "YmlnIHZpcA": "VIP большой"
+                       }
+        request.session['table_number_qr'] = dict_address[pk]
         return redirect('index')
 
 
