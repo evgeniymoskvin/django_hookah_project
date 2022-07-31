@@ -58,6 +58,13 @@ class PrintBarman(View):
         return redirect('index')
 
 
+class PrintNotDisturb(View):
+    def get(self, request):
+        mes = f"Стол {request.session.get('table_number_qr')} просит не беспокоить"
+        telegram_send.send(messages=[mes])
+        return redirect('index')
+
+
 class AdminSendView(View):
     def post(self, request):
         form = AdminSendForm(request.POST)

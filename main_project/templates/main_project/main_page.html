@@ -1,14 +1,14 @@
 {% extends "main_project/base.html" %}
 
 {% block content %}
-<div class="container px-3 py-3 my-3">
+<div class="container-fluid px-3 py-3 my-3">
     {% if table_number is not None %}
-        <h2 class="text-center m-3">Mist lounge</h2>
+        <h2 class="text-center m-3 "><b>MIST LOUNGE</b></h2>
         <p class="text-center">Ваш стол №{{ table_number }}</p>
         <!-- Кнопки -->
 
         <!--Кнопка позвать кальянщика-->
-        <button type="button" class="btn btn-light col-12" data-bs-toggle="modal" data-bs-target="#HookahModal">
+        <button type="button" class="btn btn-light col-12"  data-bs-toggle="modal" data-bs-target="#HookahModal">
             Позвать кальянщика
         </button>
         <br>
@@ -19,18 +19,24 @@
         </button>
         <br>
         <br>
-        <!--Кнопка меню-->
-        <a href="https://me-menu.com/ru/order/table/14525/menu/19493">
-            <button type="button" class="btn btn-light col-12" data-bs-toggle="modal">
-                Меню
-            </button>
-        </a>
+        <!--Кнопка Не беспокоить-->
+        <button type="button" class="btn btn-light col-12" data-bs-toggle="modal" data-bs-target="#DisturbModal">
+            Попросить не беспокоить
+        </button>
         <br>
         <br>
         <!--Кнопка написать администратору модальное-->
         <button type="button" class="btn btn-light col-12" data-bs-toggle="modal" data-bs-target="#AdminModal">
             Написать администратору
         </button>
+        <br>
+        <br>
+        <!--Кнопка меню-->
+        <a href="https://me-menu.com/ru/order/table/14525/menu/19493">
+            <button type="button" class="btn btn-light col-12" data-bs-toggle="modal">
+                Меню
+            </button>
+        </a>
 
         <!-- Модальное окно позвать кальянщика -->
         <div class="modal fade " id="HookahModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -65,6 +71,27 @@
                         <button type="button"
                                 class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end"><a
                                 href="{% url "print-barman" %}"><strong>Позвать</strong></a></button>
+                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
+                                data-bs-dismiss="modal">Отмена
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Модальное окно не беспокоить -->
+
+        <div class="modal fade " id="DisturbModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded-3 shadow">
+                    <div class="modal-body">
+                        <p class="h6 text-center">Хотите, что бы вас не беспокоили?</p>
+                    </div>
+                    <div class="modal-footer flex-nowrap p-0">
+                        <button type="button"
+                                class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end"><a
+                                href="{% url "not-disturb" %}"><strong>Да</strong></a></button>
                         <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
                                 data-bs-dismiss="modal">Отмена
                         </button>
