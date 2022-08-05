@@ -23,8 +23,11 @@ class IndexView(View):
 
 
 class GenerateView(View):
+    """
+    Генерация сессии в зависимости от ссылки
+    """
+
     def get(self, request, pk):
-        print(pk)
         dict_address = {67868598762858: 1,
                         77497795: 2,
                         77488198676462: 3,
@@ -37,21 +40,26 @@ class GenerateView(View):
                         762726817548968077868596: "VIP малый",
                         66868587504967897642: "VIP большой"
                         }
-        print(dict_address[pk])
-        print(type(dict_address[pk]))
         request.session['table_number_qr'] = dict_address[pk]
         return redirect('index')
 
 
 class PrintHookah(View):
+    """
+    Отправка сообщения в Telegram
+    """
+
     def get(self, request):
-        print(request.session.get('table_number_qr'))
         mes = f"Кальянщик на стол {request.session.get('table_number_qr')}"
         telegram_send.send(messages=[mes])
         return redirect('index')
 
 
 class PrintBarman(View):
+    """
+    Отправка сообщения в Telegram
+    """
+
     def get(self, request):
         mes = f"Бармен на стол {request.session.get('table_number_qr')}"
         telegram_send.send(messages=[mes])
@@ -59,6 +67,10 @@ class PrintBarman(View):
 
 
 class PrintNotDisturb(View):
+    """
+    Отправка сообщения в Telegram
+    """
+
     def get(self, request):
         mes = f"Стол {request.session.get('table_number_qr')} просит не беспокоить"
         telegram_send.send(messages=[mes])
@@ -66,6 +78,10 @@ class PrintNotDisturb(View):
 
 
 class AdminSendView(View):
+    """
+    Отправка сообщения в Telegram
+    """
+
     def post(self, request):
         form = AdminSendForm(request.POST)
         input_data_form = form.data.dict()
