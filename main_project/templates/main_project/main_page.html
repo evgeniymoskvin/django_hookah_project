@@ -1,137 +1,189 @@
 {% extends "main_project/base.html" %}
 
 {% block content %}
-<div class="container-fluid px-3 py-3 my-3">
-    {% if table_number is not None %}
-        <h2 class="text-center m-3 "><b>MIST LOUNGE</b></h2>
-        <p class="text-center">Ваш стол №{{ table_number }}</p>
-        <!-- Кнопки -->
+    <div class="container-fluid px-3 py-3 my-3">
+        {% if table_number is not None %}
+            <h2 class="text-center m-3 "><b>MIST LOUNGE</b></h2>
+            <p class="text-center">Ваш стол №{{ table_number }}</p>
+            <!-- Кнопки -->
 
-        <!--Кнопка позвать кальянщика-->
-        <button type="button" class="btn btn-light col-12"  data-bs-toggle="modal" data-bs-target="#HookahModal">
-            Позвать кальянщика
-        </button>
-        <br>
-        <br>
-        <!--Кнопка позвать бармена-->
-        <button type="button" class="btn btn-light col-12" data-bs-toggle="modal" data-bs-target="#BarModal">
-            Позвать бармена
-        </button>
-        <br>
-        <br>
-        <!--Кнопка Не беспокоить-->
-        <button type="button" class="btn btn-light col-12" data-bs-toggle="modal" data-bs-target="#DisturbModal">
-            Попросить не беспокоить
-        </button>
-        <br>
-        <br>
-        <!--Кнопка написать администратору модальное-->
-        <button type="button" class="btn btn-light col-12" data-bs-toggle="modal" data-bs-target="#AdminModal">
-            Написать администратору
-        </button>
-        <br>
-        <br>
-        <!--Кнопка меню-->
-        <a href="https://me-menu.com/ru/order/table/14525/menu/19493">
-            <button type="button" class="btn btn-light col-12" data-bs-toggle="modal">
-                Меню
+            <!--Кнопка позвать кальянщика-->
+            <button type="button" class="btn btn-light col-12" data-bs-toggle="modal" data-bs-target="#HookahModal">
+                Позвать кальянщика
             </button>
-        </a>
-        <br>
-        <br>
-        <!--Кнопка Telegram-->
-        <a href="https://t.me/+yALkfV4i6x8xYmRi">
-            <button type="button" class="btn btn-light col-12" data-bs-toggle="modal">
-                Наш Telegram канал
+            <br>
+            <br>
+            <!--Кнопка позвать бармена-->
+            <button type="button" class="btn btn-light col-12" data-bs-toggle="modal" data-bs-target="#BarModal">
+                Позвать бармена
             </button>
-        </a>
+            <br>
+            <br>
+            <!--Кнопка Не беспокоить-->
+            <button type="button" class="btn btn-light col-12" data-bs-toggle="modal" data-bs-target="#DisturbModal">
+                Попросить не беспокоить
+            </button>
+            <br>
+            <br>
+            <!--Кнопка написать администратору модальное-->
+            <button type="button" class="btn btn-light col-12" data-bs-toggle="modal" data-bs-target="#AdminModal">
+                Написать администратору
+            </button>
+            <br>
+            <br>
+            <!--Кнопка меню-->
+            <a href="https://me-menu.com/ru/order/table/14525/menu/19493">
+                <button type="button" class="btn btn-light col-12" data-bs-toggle="modal">
+                    Меню
+                </button>
+            </a>
+            <br>
+            <br>
+            <!--Кнопка Telegram-->
+            <a href="https://t.me/+yALkfV4i6x8xYmRi">
+                <button type="button" class="btn btn-light col-12" data-bs-toggle="modal">
+                    Наш Telegram канал
+                </button>
+            </a>
+            <br>
+            <br>
 
-        <!-- Модальное окно позвать кальянщика -->
-        <div class="modal fade " id="HookahModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content rounded-3 shadow">
-                    <div class="modal-body">
-                        <p class="h6 text-center">Позвать кальянщика?</p>
-                    </div>
-                    <div class="modal-footer flex-nowrap p-0">
-                        <button type="button"
-                                class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end">
-                            <a href="{% url "print-hookah" %}"><strong>Позвать</strong></a></button>
-                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
-                                data-bs-dismiss="modal">Отмена
-                        </button>
+            <!--Кнопка Отзыв-->
+            <button type="button" class="btn btn-light col-12" data-bs-toggle="modal" data-bs-target="#ReviewModal">
+                Оставить отзыв
+            </button>
+            <!-- Модальное окно позвать кальянщика -->
+            <div class="modal fade " id="HookahModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content rounded-3 shadow">
+                        <div class="modal-body">
+                            <p class="h6 text-center">Позвать кальянщика?</p>
+                        </div>
+                        <div class="modal-footer flex-nowrap p-0">
+                            <button type="button"
+                                    class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end">
+                                <a href="{% url "print-hookah" %}"><strong>Позвать</strong></a></button>
+                            <button type="button"
+                                    class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
+                                    data-bs-dismiss="modal">Отмена
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Модальное окно позвать бармена -->
+            <!-- Модальное окно позвать бармена -->
 
-        <div class="modal fade " id="BarModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content rounded-3 shadow">
-                    <div class="modal-body">
-                        <p class="h6 text-center">Позвать бармена?</p>
-                    </div>
-                    <div class="modal-footer flex-nowrap p-0">
-                        <button type="button"
-                                class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end"><a
-                                href="{% url "print-barman" %}"><strong>Позвать</strong></a></button>
-                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
-                                data-bs-dismiss="modal">Отмена
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Модальное окно не беспокоить -->
-
-        <div class="modal fade " id="DisturbModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content rounded-3 shadow">
-                    <div class="modal-body">
-                        <p class="h6 text-center">Хотите, что бы вас не беспокоили?</p>
-                    </div>
-                    <div class="modal-footer flex-nowrap p-0">
-                        <button type="button"
-                                class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end"><a
-                                href="{% url "not-disturb" %}"><strong>Да</strong></a></button>
-                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
-                                data-bs-dismiss="modal">Отмена
-                        </button>
+            <div class="modal fade " id="BarModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content rounded-3 shadow">
+                        <div class="modal-body">
+                            <p class="h6 text-center">Позвать бармена?</p>
+                        </div>
+                        <div class="modal-footer flex-nowrap p-0">
+                            <button type="button"
+                                    class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end">
+                                <a
+                                        href="{% url "print-barman" %}"><strong>Позвать</strong></a></button>
+                            <button type="button"
+                                    class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
+                                    data-bs-dismiss="modal">Отмена
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Модальное окно отправить письмо -->
-        <div class="modal fade " id="AdminModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content rounded-3 shadow">
-                    <div class="modal-body">
-                        <p class="h6 text-center m-6">Написать администратору</p>
-                    </div>
-                    <div class="modal-body flex-nowrap text-center m-6">
-                        <form action="send-admin" method="post" class="text-center">
-                            {% csrf_token %}
-                            {{ form.message }}
-                            <br>
-                            <button type="submit" class="btn border-end">Отправить</button>
-                            <button type="button" class="btn" data-bs-dismiss="modal">Отмена</button>
-                        </form>
+            <!-- Модальное окно не беспокоить -->
+
+            <div class="modal fade " id="DisturbModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content rounded-3 shadow">
+                        <div class="modal-body">
+                            <p class="h6 text-center">Хотите, что бы вас не беспокоили?</p>
+                        </div>
+                        <div class="modal-footer flex-nowrap p-0">
+                            <button type="button"
+                                    class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end">
+                                <a
+                                        href="{% url "not-disturb" %}"><strong>Да</strong></a></button>
+                            <button type="button"
+                                    class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
+                                    data-bs-dismiss="modal">Отмена
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    {% else %}
-        <h2 class="text-center m-3">Необходимо отсканировать <br> qr код на столе</h2>
-    {% endif %}
-</div>
+            <!-- Модальное окно отправить письмо -->
+            <div class="modal fade " id="AdminModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content rounded-3 shadow">
+                        <div class="modal-body">
+                            <p class="h6 text-center m-6">Написать администратору</p>
+                        </div>
+                        <div class="modal-body flex-nowrap text-center m-6">
+                            <form action="send-admin" method="post" class="text-center">
+                                {% csrf_token %}
+                                {{ form.message }}
+                                <br>
+                                <button type="submit" class="btn border-end">Отправить</button>
+                                <button type="button" class="btn" data-bs-dismiss="modal">Отмена</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Модальное окно позвать бармена -->
+
+            <div class="modal fade " id="ReviewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content rounded-3 shadow">
+                        <div class="modal-body">
+                            <p class="h6 text-center">Оставить отзыв:</p>
+                        </div>
+                        <a href="https://yandex.ru/profile/227840752378">
+                            <button type="button" class="btn btn-light col-12" data-bs-toggle="modal">
+                                Яндекс Карты
+                            </button>
+                        </a>
+                        <a><br></a>
+                        <a href="https://2gis.ru/spb/geo/70000001062070247">
+                            <button type="button" class="btn btn-light col-12" data-bs-toggle="modal">
+                                2Gis
+                            </button>
+                        </a>
+                        <a><br></a>
+                        <a href="https://www.restoclub.ru/spb/place/mist-lounge">
+                            <button type="button" class="btn btn-light col-12" data-bs-toggle="modal">
+                                RestoClub
+                            </button>
+                        </a>
+
+                        <div class="modal-footer flex-nowrap p-0">
+                            {#                            <button type="button"#}
+                            {#                                    class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end">#}
+                            {#                                <a#}
+                            {#                                        href="{% url "print-barman" %}"><strong>Позвать</strong></a></button>#}
+                            <button type="button"
+                                    class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
+                                    data-bs-dismiss="modal">Отмена
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% else %}
+            <h2 class="text-center m-3">Необходимо отсканировать <br> qr код на столе</h2>
+        {% endif %}
+    </div>
 
 {% endblock %}
