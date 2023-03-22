@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: python /usr/src/django_hookah_project/manage.py runserver 0.0.0.0:8002
+    volumes:
+      - .:/usr/src/django_hookah_project
+    ports:
+      - 8002:8002
