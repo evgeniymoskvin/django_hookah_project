@@ -8,14 +8,21 @@ services:
     command: gunicorn django_dima_project.wsgi:application --bind 0.0.0.0:8000
     expose:
       - 8000
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/media
     env_file:
       - ./env.prod
-    volumes:
-      - .:/usr/src/app
   nginx:
     build: ./nginx
     ports:
       - 1337:80
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/media
     depends_on:
       - web
 
+volumes:
+  static_volume:
+  media_volume:
